@@ -446,6 +446,8 @@ module.exports = function (grunt) {
     });
   });
 
+  grunt.loadNpmTasks('grunt-contrib-compass');
+
   // Since Apache Ripple serves assets directly out of their respective platform
   // directories, we watch all registered files and then copy all un-built assets
   // over to www/. Last step is running cordova prepare so we can refresh the ripple
