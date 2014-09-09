@@ -6,6 +6,8 @@ map {
 .scroll {
   height: 100%;
 }
-.title {
-  color: #447799;
+.bar.bar-stable .title {
+  color: orange;
+  font-size: 24px;
+  background-color: red;
 }
