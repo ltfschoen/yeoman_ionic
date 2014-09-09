@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "dependencies": {
     "ionic": "v1.0.0-beta.11",
-    "polymer": "Polymer/polymer#~0.4.0"
+    "polymer": "Polymer/polymer#~0.4.0",
+    "core-elements": "Polymer/core-elements#~0.4.0",
+    "paper-elements": "Polymer/paper-elements#~0.4.0"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.17",
