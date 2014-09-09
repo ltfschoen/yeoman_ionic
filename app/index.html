@@ -5,13 +5,22 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>"YeomanIonic"</title>
 
+    <!-- 1. POLYFILL - Load platform.js for polyfill support. -->
+    <!-- Note: This file must be included before code that touches the DOM. -->
+    <!-- Run server for HTML Imports polyfill to work until native API avail -->
+    <script src="bower_components/platform/platform.js"></script>
+    <!-- 2. POLYFILL - Use an HTML Import to bring in the element. -->
+    <!-- Note: Import location (URL) from alternate domain must be -->
+    <!--       CORS-enabled. Refer to: -->
+    <!--       http://www.html5rocks.com/en/tutorials/webcomponents/imports/ -->
+    <link rel="import" href="bower_components/core-ajax/core-ajax.html">
+
     <!-- build:css styles/vendor.css -->
     <!-- <link rel="stylesheet" href="vendor/some.contrib.css"> -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/ionic/release/css/ionic.css" />
     <!-- endbower -->
     <!-- endbuild -->
-
 
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
@@ -21,6 +30,8 @@
   <body ng-app="YeomanIonic" ng-controller="MapCtrl">
     <ion-header-bar class="bar-stable">
       <h1 class="title">Map for Luke</h1>
+      <!-- 3. POLYFILL - Declare the element. Configure using its attributes. -->
+      <core-ajax url="//example.com/json" handleAs="json"></core-ajax>
     </ion-header-bar>
 
     <ion-content scroll="false">
@@ -45,7 +56,6 @@
     <script src="bower_components/collide/collide.js"></script>
     <script src="bower_components/ionic/release/js/ionic.js"></script>
     <script src="bower_components/ionic/release/js/ionic-angular.js"></script>
-    <script src="bower_components/platform/platform.js"></script>
     <script src="bower_components/polymer/polymer.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
@@ -54,11 +64,49 @@
     <script src="cordova.js"></script>
 
 
-        <!-- build:js scripts/scripts.js -->
-        <script src="scripts/config.js"></script>
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers.js"></script>
-        <script src="scripts/directives.js"></script>
-        <!-- endbuild -->
+    <!-- build:js scripts/scripts.js -->
+    <script src="scripts/config.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers.js"></script>
+    <script src="scripts/directives.js"></script>
+    <!-- 4. POLYFILL -->
+    <script>
+  
+      /* HTML Imports polyfill begins processing link tags 
+         including linked stylesheets, external scripts, nested HTML imports
+         when DOMContentLoaded event fires. Listen for HTMLImportsLoaded
+         event on window. The polyfill does not parse any data in loaded resources. Custom Elements polyfill detects when HTML Imports is loaded to parse all imports when HTMLImportsLoaded event fires.
+         Links: 
+          - HTMLImports W3C Spec - http://w3c.github.io/webcomponents/spec/imports/
+          - HTMLImports Spec Implemented by Polyfill on GitHub - https://github.com/polymer/HTMLImports
+       */
+      window.addEventListener('HTMLImportsLoaded', function(e) {
+        // all imports loaded
+        console.log("==> STATUS - All imports loaded");
+      });
+      /* WebComponentsReady event stands in for native behaviour (instead of using HTMLImports to polyfill) by ensuring the imports have loaded and any registered elements in them upgraded through blocking the loading of imports with <script> tags in the main document. 
+       */
+      window.addEventListener('WebComponentsReady', function(e) {
+        // imports are loaded and elements have been registered
+        console.log("==> STATUS - All imports loaded and elements registered");
+        // use an 'underscore' in the polyfill to reference the document itself.
+        console.log("==> STATUS - Current HTML document is:" + document._currentScript.ownerDocument.title);
+      });
+
+      // Wait for 'polymer-ready'. Ensures the element is upgraded.
+      window.addEventListener('polymer-ready', function(e) {
+        console.log("==> STATUS - Polymer ready");
+        var ajax = document.querySelector('core-ajax');
+
+        // Respond to events it fires.
+        ajax.addEventListener('core-response', function(e) {
+          console.log("==> STATUS - Responding to event fired by Core Response");
+          console.log(this.response);
+        });
+
+        ajax.go(); // Call its API methods.
+      });
+    </script>
+    <!-- endbuild -->
 </body>
 </html>
