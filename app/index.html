@@ -71,41 +71,61 @@
     <script src="scripts/directives.js"></script>
     <!-- 4. POLYFILL -->
     <script>
-  
-      /* HTML Imports polyfill begins processing link tags 
-         including linked stylesheets, external scripts, nested HTML imports
-         when DOMContentLoaded event fires. Listen for HTMLImportsLoaded
-         event on window. The polyfill does not parse any data in loaded resources. Custom Elements polyfill detects when HTML Imports is loaded to parse all imports when HTMLImportsLoaded event fires.
-         Links: 
-          - HTMLImports W3C Spec - http://w3c.github.io/webcomponents/spec/imports/
-          - HTMLImports Spec Implemented by Polyfill on GitHub - https://github.com/polymer/HTMLImports
-       */
-      window.addEventListener('HTMLImportsLoaded', function(e) {
-        // all imports loaded
-        console.log("==> STATUS - All imports loaded");
-      });
-      /* WebComponentsReady event stands in for native behaviour (instead of using HTMLImports to polyfill) by ensuring the imports have loaded and any registered elements in them upgraded through blocking the loading of imports with <script> tags in the main document. 
-       */
-      window.addEventListener('WebComponentsReady', function(e) {
-        // imports are loaded and elements have been registered
-        console.log("==> STATUS - All imports loaded and elements registered");
-        // use an 'underscore' in the polyfill to reference the document itself.
-        console.log("==> STATUS - Current HTML document is:" + document._currentScript.ownerDocument.title);
-      });
+      /* 
+        Polymer's Polyfill Browser Support and Feature Detection 
+          - Check if .import exists on <link> element
+          - Currently Chrome 36 browser supports latest implementation spec
 
-      // Wait for 'polymer-ready'. Ensures the element is upgraded.
-      window.addEventListener('polymer-ready', function(e) {
-        console.log("==> STATUS - Polymer ready");
-        var ajax = document.querySelector('core-ajax');
+        Note: To enable experimental Web Platform features in Chrome browser visit chrome://flags/ 
+        
+        Refer to: 
+          http://www.html5rocks.com/en/tutorials/webcomponents/imports/ 
+       */
+      function supportsImports() {
+        return 'import' in document.createElement('link');
+      }
 
-        // Respond to events it fires.
-        ajax.addEventListener('core-response', function(e) {
-          console.log("==> STATUS - Responding to event fired by Core Response");
-          console.log(this.response);
+      if (supportsImports()) {
+        // Good to go!
+
+        /* HTML Imports polyfill begins processing link tags 
+           including linked stylesheets, external scripts, nested HTML imports
+           when DOMContentLoaded event fires. Listen for HTMLImportsLoaded
+           event on window. The polyfill does not parse any data in loaded resources. Custom Elements polyfill detects when HTML Imports is loaded to parse all imports when HTMLImportsLoaded event fires.
+           Links: 
+            - HTMLImports W3C Spec - http://w3c.github.io/webcomponents/spec/imports/
+            - HTMLImports Spec Implemented by Polyfill on GitHub - https://github.com/polymer/HTMLImports
+         */
+        window.addEventListener('HTMLImportsLoaded', function(e) {
+          // all imports loaded
+          console.log("==> STATUS - All imports loaded");
+        });
+        /* WebComponentsReady event stands in for native behaviour (instead of using HTMLImports to polyfill) by ensuring the imports have loaded and any registered elements in them upgraded through blocking the loading of imports with <script> tags in the main document. 
+         */
+        window.addEventListener('WebComponentsReady', function(e) {
+          // imports are loaded and elements have been registered
+          console.log("==> STATUS - All imports loaded and elements registered");
+          // use an 'underscore' in the polyfill to reference the document itself.
+          console.log("==> STATUS - Current HTML document is:" + document._currentScript.ownerDocument.title);
         });
 
-        ajax.go(); // Call its API methods.
-      });
+        // Wait for 'polymer-ready'. Ensures the element is upgraded.
+        window.addEventListener('polymer-ready', function(e) {
+          console.log("==> STATUS - Polymer ready");
+          var ajax = document.querySelector('core-ajax');
+
+          // Respond to events it fires.
+          ajax.addEventListener('core-response', function(e) {
+            console.log("==> STATUS - Responding to event fired by Core Response");
+            console.log(this.response);
+          });
+
+          ajax.go(); // Call its API methods.
+        });
+      } else {
+        // Use other libraries/require systems to load files.
+        console.log("==> STATUS - Browser does not support Polymer Polyfill");
+      }
     </script>
     <!-- endbuild -->
 </body>
