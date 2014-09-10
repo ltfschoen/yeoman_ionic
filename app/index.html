@@ -130,14 +130,14 @@
         $(document).ready(function(){
           // Button Toggles Show/Hide Map and Navigation Display
           $('button#map').click(function(){
-            console.log("==> Clicked Map2");
-            var linkMap = document.querySelector('link[id="map"]');
+            console.log("==> Clicked Map");
+            // var linkMap = document.querySelector('link[id="map"]');
             var linkFooter = document.querySelector('link[id="footer"]');
-            var contentMap = linkMap.import;
+            // var contentMap = linkMap.import;
             var contentFooter = linkFooter.import;
 
             // Grab DOM from shared html document
-            var elMap = contentMap.querySelector('map');
+            // var elMap = contentMap.querySelector('map');
             var elFooter = contentFooter.querySelector('a');
             // Toggle between displaying and removing the map when Map button clicked
             if (document.getElementsByTagName('ion-footer-bar')[0].getAttribute("id") == "mapActive") {
@@ -147,7 +147,8 @@
               document.getElementsByTagName('ion-footer-bar')[0].setAttribute("id","mapInactive");
               $('button#map')[0].innerHTML = "Show Map";
             } else {
-              document.getElementsByTagName('ion-content')[0].appendChild(elMap.cloneNode(true));
+              // document.getElementsByTagName('ion-content')[0].appendChild(elMap.cloneNode(true));
+              document.getElementsByTagName('ion-content')[0].innerHTML = "<map on-create='mapCreated(map)'></map>";
               document.getElementsByTagName('ion-footer-bar')[0].appendChild(elFooter.cloneNode(true));
               // Flags map is active
               document.getElementsByTagName('ion-footer-bar')[0].setAttribute("id","mapActive");
@@ -160,7 +161,7 @@
         // Use other libraries/require systems to load files.
         console.log("==> STATUS - Browser does not support Polymer Polyfill");
         document.querySelector("#title").innerHTML = "Browser does not support Polymer Polyfill";
-      }
+      };
 
     </script>
     <!-- endbuild -->
