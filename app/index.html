@@ -25,21 +25,25 @@
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+
+    <link rel="import" id="map" href="shared/map.html">
+    <link rel="import" id="footer" href="shared/footer.html">
   </head>
 
   <body ng-app="YeomanIonic" ng-controller="MapCtrl">
     <ion-header-bar class="bar-stable">
       <h1 class="title">Map for Luke</h1>
+      <button id="map">Show Map</button>
       <!-- 3. POLYFILL - Declare the element. Configure using its attributes. -->
       <core-ajax url="//example.com/json" handleAs="json"></core-ajax>
     </ion-header-bar>
 
     <ion-content scroll="false">
-      <map on-create="mapCreated(map)"></map>
+      <!-- shared inserted here -->
     </ion-content>
 
-    <ion-footer-bar class="bar-stable">
-      <a ng-click="centerOnMe()" class="button button-icon icon ion-navigate"></a>
+    <ion-footer-bar class="bar-stable" id="mapInactive">
+      <!-- shared inserted here -->
     </ion-footer-bar>
 
     <!-- build:js scripts/vendor.js -->
@@ -49,6 +53,7 @@
     <!-- You should replace it with a version downloaded using your API key -->
     <script src="vendor/google/maps.js"></script>
     <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
@@ -63,14 +68,13 @@
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
-
     <!-- build:js scripts/scripts.js -->
     <script src="scripts/config.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers.js"></script>
     <script src="scripts/directives.js"></script>
     <!-- 4. POLYFILL -->
-    <script>
+    <script type="text/javascript" async="true">
       /* 
         Polymer's Polyfill Browser Support and Feature Detection 
           - Check if .import exists on <link> element
@@ -122,10 +126,42 @@
 
           ajax.go(); // Call its API methods.
         });
+
+        // CLICK TO DISPLAY MAP WITH JQUERY PlAN #B
+        $(document).ready(function(){
+          $('button#map').click(function(){
+            console.log("==> Clicked Map2");
+            var linkMap = document.querySelector('link[id="map"]');
+            var linkFooter = document.querySelector('link[id="footer"]');
+            var contentMap = linkMap.import;
+            var contentFooter = linkFooter.import;
+
+            // Grab DOM from shared html document
+            var elMap = contentMap.querySelector('map');
+            var elFooter = contentFooter.querySelector('a');
+            // Toggle between displaying and removing the map when Map button clicked
+            if (document.getElementsByTagName('ion-footer-bar')[0].getAttribute("id") == "mapActive") {
+              document.getElementsByTagName('ion-content')[0].innerHTML = null;
+              document.getElementsByTagName('ion-footer-bar')[0].innerHTML = null;
+              // Flags map is inactive
+              document.getElementsByTagName('ion-footer-bar')[0].setAttribute("id","mapInactive");
+              $('button#map')[0].innerHTML = "Show Map";
+            } else {
+              document.getElementsByTagName('ion-content')[0].appendChild(elMap.cloneNode(true));
+              document.getElementsByTagName('ion-footer-bar')[0].appendChild(elFooter.cloneNode(true));
+              // Flags map is active
+              document.getElementsByTagName('ion-footer-bar')[0].setAttribute("id","mapActive");
+              $('button#map')[0].innerHTML = "Hide Map";
+            }
+          });
+        });
+
       } else {
         // Use other libraries/require systems to load files.
         console.log("==> STATUS - Browser does not support Polymer Polyfill");
+        document.querySelector("#title").innerHTML = "Browser does not support Polymer Polyfill";
       }
+
     </script>
     <!-- endbuild -->
 </body>
