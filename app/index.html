@@ -39,11 +39,11 @@
     </ion-header-bar>
 
     <ion-content scroll="false">
-      <!-- shared inserted here -->
+      <map on-create="mapCreated(map)"></map>
     </ion-content>
 
     <ion-footer-bar class="bar-stable" id="mapInactive">
-      <!-- shared inserted here -->
+      <a ng-click="centerOnMe()" class="button button-icon icon ion-navigate"></a>
     </ion-footer-bar>
 
     <!-- build:js scripts/vendor.js -->
@@ -125,35 +125,6 @@
           });
 
           ajax.go(); // Call its API methods.
-        });
-
-        $(document).ready(function(){
-          // Button Toggles Show/Hide Map and Navigation Display
-          $('button#map').click(function(){
-            console.log("==> Clicked Map2");
-            var linkMap = document.querySelector('link[id="map"]');
-            var linkFooter = document.querySelector('link[id="footer"]');
-            var contentMap = linkMap.import;
-            var contentFooter = linkFooter.import;
-
-            // Grab DOM from shared html document
-            var elMap = contentMap.querySelector('map');
-            var elFooter = contentFooter.querySelector('a');
-            // Toggle between displaying and removing the map when Map button clicked
-            if (document.getElementsByTagName('ion-footer-bar')[0].getAttribute("id") == "mapActive") {
-              document.getElementsByTagName('ion-content')[0].innerHTML = null;
-              document.getElementsByTagName('ion-footer-bar')[0].innerHTML = null;
-              // Flags map is inactive
-              document.getElementsByTagName('ion-footer-bar')[0].setAttribute("id","mapInactive");
-              $('button#map')[0].innerHTML = "Show Map";
-            } else {
-              document.getElementsByTagName('ion-content')[0].appendChild(elMap.cloneNode(true));
-              document.getElementsByTagName('ion-footer-bar')[0].appendChild(elFooter.cloneNode(true));
-              // Flags map is active
-              document.getElementsByTagName('ion-footer-bar')[0].setAttribute("id","mapActive");
-              $('button#map')[0].innerHTML = "Hide Map";
-            }
-          });
         });
 
       } else {

@@ -3,6 +3,7 @@
 angular.module('YeomanIonic.controllers', [])
 
 .controller('MapCtrl', function($scope, $ionicLoading) {
+
   $scope.mapCreated = function(map) {
     $scope.map = map;
   };
