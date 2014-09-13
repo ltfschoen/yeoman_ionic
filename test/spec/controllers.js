@@ -18,7 +18,7 @@ describe('Controller: MapCtrl', function(){
     });
   }));
 
-  it('should attach list of 3 sentences (model) to scope', function () {
+  it('should attach list of 2 sentences (model) to scope', function () {
     scope.sentences.should.have.length(2);
   });
 
