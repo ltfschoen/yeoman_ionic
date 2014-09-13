@@ -48,7 +48,8 @@
         <div class="row">
           <div class="col-md-2">
             <!--Sidebar content-->
-
+            
+            <!-- Angular data-binds input box name on page load to matching data model -->
             Search: <input ng-model="query">
 
           </div>
@@ -57,6 +58,7 @@
 
             <ul>
               <!-- Angular filter function to process input for ngRepeat Directive -->
+              <!-- it creates a new array of records matching the query --> 
               <li ng-repeat="sentence in sentences | filter:query">
                 <!-- bindings refer to app model setup in controller -->
                 <span>{{sentence.name}}</span>

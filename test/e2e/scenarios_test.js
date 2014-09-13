@@ -3,7 +3,8 @@ describe('YeomanIonic App', function() {
   describe('Sentences view', function() {
 
     beforeEach(function() {
-      browser.get('app/index.html');
+      // match the address that opens with command 'grunt server'
+      browser.get('/'); // opens /app/index.html (root)
     });
 
     // verify search box and repeater are correctly wired together
@@ -19,7 +20,7 @@ describe('YeomanIonic App', function() {
 
       query.clear();
       query.sendKeys('1st');
-      expect(sentenceList.count()).toBe(2);
+      expect(sentenceList.count()).toBe(1);
     });
   });
 });
