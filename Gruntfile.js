@@ -401,6 +401,14 @@ module.exports = function (grunt) {
       }
     },
 
+    protractor: {
+      options: {
+        keepAlive: true,
+        configFile: "protractor.conf.js"
+      },
+      run: {}
+    },
+
     // ngAnnotate tries to make the code safe for minification automatically by
     // using the Angular long form for dependency injection.
     ngAnnotate: {
@@ -477,7 +485,7 @@ module.exports = function (grunt) {
   // we don't have to run the karma test server as part of `grunt serve`
   grunt.registerTask('watch:karma', function () {
     var karma = {
-      files: ['<%= yeoman.app %>/<%= yeoman.scripts %>/**/*.js', 'test/spec/**/*.js'],
+      files: ['<%= yeoman.app %>/<%= yeoman.scripts %>/**/*.js', 'test/spec/**/*.js', 'test/e2e/**/*.js'],
       tasks: ['newer:jshint:test', 'karma:unit:run']
     };
     grunt.config.set('watch', karma);
@@ -500,6 +508,8 @@ module.exports = function (grunt) {
     ]);
   });
 
+  // TODO: somehow register 'protractor:run' in this section 
+  // so it runs without error with the command 'grunt test'
   grunt.registerTask('test', [
     'clean:server',
     'concurrent:test',

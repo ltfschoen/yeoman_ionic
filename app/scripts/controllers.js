@@ -5,10 +5,10 @@ angular.module('YeomanIonic.controllers', [])
 .controller('MapCtrl', function($scope, $ionicLoading) {
 
   $scope.sentences = [
-    {'name': "My name is Luke",
-     'snippet': "Luke has a snippet"},
-    {'name': "My name is ___", 
-     'snippet': "___ has a snippet too"}
+    {'name': "1st sentence",
+     'snippet': "Luke"},
+    {'name': "2nd sentence", 
+     'snippet': "Another"}
   ];
 
   $scope.mapCreated = function(map) {
