@@ -25,7 +25,15 @@ describe('Controller: MapCtrl', function(){
 
   // verify sentences array property on the scope contains 2 records
   it('should attach list of 2 sentences (model) to scope', function () {
-    scope.sentences.should.have.length(2);
+    scope.sentences.should.have.length(4);
+  });
+
+  // NOT WORKING - gives:
+  //   TypeError: 'undefined' is not a function (evaluating 'scope.orderProp.should.have.value('name')')
+  // unit test to verify that default ordering property is set
+  it('should set the default value of orderProp model', function() {
+    // expect(scope.orderProp).toBe('age');
+    scope.orderProp.should.have.value('name');
   });
 
 });
