@@ -1,25 +1,25 @@
 'use strict';
 
-describe('Controller: PetIndexCtrl', function () {
+describe('Controller: MapCtrl', function(){
 
   var should = chai.should();
 
   // load the controller's module
   beforeEach(module('YeomanIonic'));
 
-  var PetIndexCtrl,
+  var MapCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    PetIndexCtrl = $controller('PetIndexCtrl', {
+    MapCtrl = $controller('MapCtrl', {
       $scope: scope
     });
   }));
 
-  it('should attach a list of pets to the scope', function () {
-    scope.pets.should.have.length(4);
+  it('should attach list of 2 sentences (model) to scope', function () {
+    scope.sentences.should.have.length(2);
   });
 
 });
