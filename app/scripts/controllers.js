@@ -5,12 +5,19 @@ angular.module('YeomanIonic.controllers', [])
 .controller('MapCtrl', function($scope, $ionicLoading) {
 
   $scope.sentences = [
-    {'name': "1st sentence",
-     'snippet': "Luke"},
-    {'name': "2nd sentence", 
-     'snippet': "Another"}
+    {'name': "Hello",
+     'snippet': "1"},
+    {'name': "Goodbye", 
+     'snippet': "2"},
+    {'name': "Greetings", 
+     'snippet': "3"},
+    {'name': "Cheerio", 
+     'snippet': "4"}
   ];
 
+  // default value of orderProp set so initialised in drop-down when used
+  $scope.orderProp = 'snippet';
+  
   $scope.mapCreated = function(map) {
     $scope.map = map;
   };
