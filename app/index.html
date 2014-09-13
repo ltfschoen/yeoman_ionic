@@ -39,27 +39,42 @@
     </ion-header-bar>
 
     <ion-content scroll="false">
-      <map on-create="mapCreated(map)"></map>
-
       <!-- dynamic content. -->
       <!-- Angular refreshes binding points. Updates view -->
       <!-- HTML template (view) as projection of model --> 
       <!-- attaches SentenceListCtrl to ul tag -->
       <!-- controller is constructor fn taking $scope param -->
-      <ul>
-<!--       <ul ng-controller="SentenceListCtrl"> -->
-        <li>
-          <span>Summary</span>
-          <p>
-            Number of Sentences.
-          </p>
-        </li>
-        <li ng-repeat="sentence in sentences">
-          <!-- bindings refer to app model setup in controller -->
-          <span>{{sentence.name}}</span>
-          <p>{{sentence.snippet}}</p>
-        </li>
-      </ul>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-2">
+            <!--Sidebar content-->
+
+            Search: <input ng-model="query">
+
+          </div>
+          <div class="col-md-10">
+            <!--Body content-->
+
+            <ul>
+              <!-- Angular filter function to process input for ngRepeat Directive -->
+              <li ng-repeat="sentence in sentences | filter:query">
+                <!-- bindings refer to app model setup in controller -->
+                <span>{{sentence.name}}</span>
+                <p>{{sentence.snippet}}</p>
+              </li>
+            </ul>
+
+            <!-- repeater to create a simple table with i incremented by 1 in binding -->
+            <table>
+              <tr><th>Row Number</th></tr>
+              <tr ng-repeat="i in [0, 1, 2]"><td>{{i+1}}</td></tr>
+            </table>
+
+          </div>
+        </div>
+      </div>
+
+      <map on-create="mapCreated(map)"></map>
 
     </ion-content>
 
