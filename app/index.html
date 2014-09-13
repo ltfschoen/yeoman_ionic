@@ -61,8 +61,11 @@
               <!-- it creates a new array of records matching the query --> 
               <li ng-repeat="sentence in sentences | filter:query">
                 <!-- bindings refer to app model setup in controller -->
+                <!-- ngBind or ngBindTemplate Directives used instead of handlebars in innerHTML section so invisible to user while page loading -->
                 <span>{{sentence.name}}</span>
                 <p>{{sentence.snippet}}</p>
+                <!-- ngBindTemplate allows multiple {{ }} -->
+                <a href="{{sentence.name}}-{{sentence.snippet}}-{{ query }}" ng-bind-template="{{ query }}">title</a>
               </li>
             </ul>
 
