@@ -42,6 +42,9 @@ angular.module('YeomanIonic.controllers', [])
 
   // dataset moved to data/sentences.json
 
+  // pre-process HTTP response by limiting sentences to first 3 on the list
+  $scope.sentences = data.splice(0, 3);
+
   // default value of orderProp set so initialised in drop-down when used
   $scope.orderProp = 'snippet';
   
