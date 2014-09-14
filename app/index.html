@@ -29,7 +29,9 @@
   </head>
   <!-- ROOT SCOPE (i.e. ngApp) -->
   <!-- MAPCTRL SCOPE -->
-  <body ng-app="YeomanIonic" ng-controller="MapCtrl">
+  <!-- ngCloak (works w IE7) hides attr until compiled by Angular -->
+  <!-- stops HTML template being briefly displayed flicker effect -->
+  <body ng-app="YeomanIonic" ng-controller="MapCtrl" ng-cloak class="ng-cloak">
     <ion-header-bar class="bar-stable">
       <h1 class="title">Map for Luke</h1>
       <button id="map">Show Map</button>
@@ -73,10 +75,8 @@
               <li ng-repeat="sentence in sentences | filter:query | orderBy:orderProp track by $index">
                 <!-- bindings refer to app model setup in controller -->
                 <!-- ngBind or ngBindTemplate Directives used instead of handlebars in innerHTML section so invisible to user while page loading -->
-                <!-- ngCloak (works w IE7) hides attr until compiled by Angular -->
-                <!-- stops HTML template being briefly displayed flicker effect -->
-                <span ng-cloak class="ng-cloak">{{sentence.name}}</span>
-                <p ng-cloak class="ng-cloak">{{sentence.snippet}}</p>
+                <span>{{sentence.name}}</span>
+                <p>{{sentence.snippet}}</p>
                 <!-- ngBindTemplate allows multiple {{ }} -->
                 <a href="{{sentence.name}}-{{sentence.snippet}}-{{ query }}" ng-bind-template="{{ query }}">title</a>
               </li>
