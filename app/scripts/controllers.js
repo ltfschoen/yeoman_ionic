@@ -27,12 +27,11 @@ angular.module('YeomanIonic.controllers', [])
       console.log("Status is: " + status);
       console.log("Headers is: " + headers);
       console.log("Config is: " + config);
-
-      // console.log("angular.fromJson(data) ==> " + angular.fromJson('data'));
-      // console.log("window.JSON.parse('data') ==> " + window.JSON.parse('data'));
-      // console.log("JSON.parse('data') ==> " + JSON.parse('data'));
-      console.log("eval(data) ==> " + eval(data)); // security issues 
-      $scope.sentences = eval(data);
+      console.log("angular.fromJson(data) ==> " + angular.fromJson(data));
+      // console.log("eval(data) ==> " + eval(data));  
+      // $scope.sentences = eval(data); // security issues
+      // $scope.sentences = angular.fromJson(data); // works but not required
+      $scope.sentences = data;
       console.log(typeof($scope.sentences));
     }).
     error(function(data, status, headers, config) {
