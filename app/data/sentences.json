@@ -1,10 +1,9 @@
-// dataset of sentences stored in JSON format
 [
   {"name": "Hello",
    "snippet": "1"
   },
   {"name": "Goodbye", 
-   "snippet': "2"
+   "snippet": "2"
   },
   {"name": "Greetings", 
    "snippet": "3"
