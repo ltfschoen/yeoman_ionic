@@ -15,10 +15,31 @@ angular.module('YeomanIonic.controllers', [])
   // AngularJS detects and parses the JSON response automatically
   // $http service returns a promise object with a success method
   // assign dataset to scope of the controller as a Model named 'sentences'
-  // Shortcut method applied below
-  $http.get('data/sentences.json').success(function(data) {
-    $scope.sentences = data;
-  });
+  $http({
+    method: 'GET', 
+    url: 'data/sentences.json'
+  }).
+    success(function(data, status, headers, config) {
+      // this callback will be called asynchronously
+      // when the response is available
+      console.log("HTTP Request - Success");
+      console.log("Data is: " + data);
+      console.log("Status is: " + status);
+      console.log("Headers is: " + headers);
+      console.log("Config is: " + config);
+
+      // console.log("angular.fromJson(data) ==> " + angular.fromJson('data'));
+      // console.log("window.JSON.parse('data') ==> " + window.JSON.parse('data'));
+      // console.log("JSON.parse('data') ==> " + JSON.parse('data'));
+      console.log("eval(data) ==> " + eval(data)); // security issues 
+      $scope.sentences = eval(data);
+      console.log(typeof($scope.sentences));
+    }).
+    error(function(data, status, headers, config) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+      console.log("HTTP Request - Error");
+    });
 
   // dataset moved to data/sentences.json
 

@@ -26,8 +26,6 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 
-    <link rel="import" id="map" href="shared/map.html">
-    <link rel="import" id="footer" href="shared/footer.html">
   </head>
   <!-- ROOT SCOPE (i.e. ngApp) -->
   <!-- MAPCTRL SCOPE -->
@@ -72,7 +70,7 @@
               <!-- Angular filter fn to process input for ngRepeat Directive -->
               <!-- it creates a new array of records matching the query --> 
               <!-- orderProp Model is input to orderBy Filter -->
-              <li ng-repeat="sentence in sentences | filter:query | orderBy:orderProp">
+              <li ng-repeat="sentence in sentences | filter:query | orderBy:orderProp track by $index">
                 <!-- bindings refer to app model setup in controller -->
                 <!-- ngBind or ngBindTemplate Directives used instead of handlebars in innerHTML section so invisible to user while page loading -->
                 <!-- ngCloak (works w IE7) hides attr until compiled by Angular -->
