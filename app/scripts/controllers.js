@@ -16,31 +16,32 @@ angular.module('YeomanIonic.controllers', [])
   // $http service returns a promise object with a success method
   // assign dataset to scope of the controller as a Model named 'sentences'
   $http({
-    method: 'GET', 
+    method: 'GET',
     url: 'data/sentences.json'
   }).
     success(function(data, status, headers, config) {
       // this callback will be called asynchronously
       // when the response is available
-      console.log("HTTP Request - Success");
-      console.log("Data is: " + data);
-      console.log("Status is: " + status);
-      console.log("Headers is: " + headers);
-      console.log("Config is: " + config);
-      console.log("angular.fromJson(data) ==> " + angular.fromJson(data));
-      // console.log("eval(data) ==> " + eval(data));  
+      console.log('HTTP Request - Success');
+      console.log('Data is: ' + data);
+      console.log('Status is: ' + status);
+      console.log('Headers is: ' + headers);
+      console.log('Config is: ' + config);
+      console.log('angular.fromJson(data) ==> ' + angular.fromJson(data));
+      // console.log('eval(data) ==> ' + eval(data));  
       // $scope.sentences = eval(data); // security issues
       // $scope.sentences = angular.fromJson(data); // works but not required
       $scope.sentences = data;
       console.log(typeof($scope.sentences));
 
-      // pre-process HTTP response by limiting sentences to first 3 on the list
-      $scope.sentences = data.splice(0, 3);
+      // pre-process HTTP response by limiting sentences to first 4 on the list
+      $scope.sentences = data.splice(0, 4);
     }).
     error(function(data, status, headers, config) {
       // called asynchronously if an error occurs
       // or server returns response with an error status.
-      console.log("HTTP Request - Error");
+      console.log('HTTP Request - Error');
+      console.log('Data is: ' + data);
     });
 
   // dataset moved to data/sentences.json
