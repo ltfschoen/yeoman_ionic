@@ -33,7 +33,7 @@
       <div class="col-md-10">
         <!--Body content-->
 
-        <ul>
+        <ul class="sentences">
           <!-- REPEATER SCOPE -->
           <!-- Angular filter fn to process input for ngRepeat Directive -->
           <!-- it creates a new array of records matching the query --> 
@@ -43,8 +43,11 @@
             <!-- ngBind or ngBindTemplate Directives used instead of handlebars in innerHTML section so invisible to user while page loading -->
             <!-- ngCloak (works w IE7) hides attr until compiled by Angular -->
             <!-- stops HTML template being briefly displayed flicker effect -->
-            <span ng-cloak class="ng-cloak">{{sentence.name}}</span>
-            <p ng-cloak class="ng-cloak">{{sentence.snippet}}</p>
+            <!-- dynamically generate links using moustache binding -->
+            <!-- ngSrc Directive for image attribute binding instead of just 'src' that grabs only the literal text -->
+            <a href="#/sentences/{{sentence.id}}"><img class="thumb" ng-src="{{sentence.imageUrl}}"/></a>
+            <span>{{sentence.name}}</span> |
+            <p>{{sentence.snippet}}</p>
             <!-- ngBindTemplate allows multiple {{ }} -->
             <a href="{{sentence.name}}-{{sentence.snippet}}-{{ query }}" ng-bind-template="{{ query }}">title</a>
           </li>
