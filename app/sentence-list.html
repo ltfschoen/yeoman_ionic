@@ -50,6 +50,10 @@
           </li>
         </ul>
 
+        <my-dialog ng-hide="dialogIsHidden" on-close="hideDialog()">
+          Check out the contents, {{sentence.name}}!
+        </my-dialog>
+
         <!-- repeater to create a simple table with i incremented by 1 in binding -->
         <table>
           <tr><th>Row Number</th></tr>
