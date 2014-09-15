@@ -1,3 +1,5 @@
+// INSTRUCTIONS: protractor protractor.conf.js (at command prompt)
+
 describe('YeomanIonic App', function() {
 
   describe('Sentences view', function() {
@@ -59,6 +61,25 @@ describe('YeomanIonic App', function() {
       browser.getLocationAbsUrl().then(function(url) {
         expect(url.split('#')[1]).toBe('/sentences/hello');
       });
+    });
+
+    it('should redirect index.html to index.html#/sentences', function() {
+      browser.get('index.html');
+      browser.getLocationAbsUrl().then(function(url) {
+        expect(url.split('#')[1]).toBe('/sentences');
+      });
+    });
+
+  });
+
+  describe('Sentences detail view', function() {
+
+    beforeEach(function() {
+      browser.get('index.html#/sentences/hello');
+    });
+
+    it('should display placeholder page with sentenceId', function() {
+      expect(element(by.binding('sentenceId')).getText()).toBe('hello');
     });
 
   });

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('YeomanIonic.directives', [])
+angular.module('yeomanIonicDirectives', [])
 
 .directive('map', function() {
   return {
