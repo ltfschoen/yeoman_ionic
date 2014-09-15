@@ -30,8 +30,9 @@ describe('Controller: MapCtrl', function(){
 
   // request $httpBackend service (mock version) be injected into beforeEach fn 
   // Note: in a production environment it facilitates all XHR and JSONP requests
-  beforeEach(inject(function ($controller, $rootScope, _$httpBackend_) {
+  beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
     $httpBackend = _$httpBackend_;
+
     // use expectGET method to train $httpBackend service to expect incoming HTTP 
     // request and how to respond when we call $httpBackend.flush method 
     $httpBackend.expectGET('data/sentences.json').
@@ -49,7 +50,7 @@ describe('Controller: MapCtrl', function(){
   }));
 
   // verify sentences array property on the scope contains 2 records
-  it('should attach list of 2 sentences (model) to scope', function () {
+  it('should attach list of 4 sentences (model) to scope', function () {
     scope.sentences.should.have.length(4);
   });
 
@@ -57,17 +58,21 @@ describe('Controller: MapCtrl', function(){
   //   TypeError: 'undefined' is not a function (evaluating 'scope.orderProp.should.have.value('name')')
   // unit test to verify that default ordering property is set
   it('should set the default value of orderProp model', function() {
-    // expect(scope.orderProp).toBe('age');
+    // expect(scope.orderProp).toBe('snippet');
     scope.orderProp.should.have.value('name');
   });
 
   it('should create "sentences" model with 2 sentences fetched from xhr', function() {
     // assertion verifies sentences model not exist on scope before response received
-    expect(scope.sentences).toBeUndefined();
+    // expect(scope.sentences).toBeUndefined();
+    scope.sentences.should.have.value('undefined');
+
+    // flush the request queue in the browser to cause the promise returned
+    // by $http service to be resolved with the trained response
     $httpBackend.flush();
 
-    expect(scope.sentences).toEqual([{name: 'Hello'},
-                                 {name: 'Greetings'}]);
+    // expect(scope.sentences).toEqual([{name: 'Hello'},{name: 'Greetings'}]);
+    scope.sentences.should.have.value("[{name: 'Hello'},{name: 'Greetings'}]");
   });
 
 });
