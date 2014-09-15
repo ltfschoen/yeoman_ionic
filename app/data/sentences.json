@@ -1,0 +1,26 @@
+[
+  {
+   "id": "hello",
+   "imageUrl": "images/hello.jpg",
+   "name": "Hello",
+   "snippet": "1"
+  },
+  {
+   "id": "goodbye",
+   "imageUrl": "images/ionic.png",
+   "name": "Goodbye", 
+   "snippet": "2"
+  },
+  {
+   "id": "greetings",
+   "imageUrl": "images/ionic.png",
+   "name": "Greetings", 
+   "snippet": "3"
+  },
+  {
+   "id": "cheerio",
+   "imageUrl": "images/ionic.png",
+   "name": "Cheerio", 
+   "snippet": "4"
+  }
+]
