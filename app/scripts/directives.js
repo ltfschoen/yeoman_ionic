@@ -8,7 +8,7 @@ angular.module('YeomanIonic.directives', [])
     scope: {
       onCreate: '&'
     },
-    link: function ($scope, $element, $attr) {
+    link: function ($scope, $element) { // $attr param removed as not used
       function initialize() {
         var mapOptions = {
           center: new google.maps.LatLng(43.07493, -89.381388),

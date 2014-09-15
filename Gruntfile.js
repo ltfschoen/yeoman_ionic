@@ -404,7 +404,7 @@ module.exports = function (grunt) {
     protractor: {
       options: {
         keepAlive: true,
-        configFile: "protractor.conf.js"
+        configFile: 'protractor.conf.js'
       },
       run: {}
     },
@@ -481,6 +481,15 @@ module.exports = function (grunt) {
     return grunt.task.run(['watch']);
   });
 
+  grunt.registerTask('protractor:run', function () {
+    var run = {
+      files: ['protractor.conf.js'],
+      tasks: ['protractor protractor:run']
+    };
+    grunt.config.set('protractor', run);
+    return grunt.task.run(['protractor']);
+  });
+
   // Dynamically configure `karma` target of `watch` task so that
   // we don't have to run the karma test server as part of `grunt serve`
   grunt.registerTask('watch:karma', function () {
@@ -515,7 +524,8 @@ module.exports = function (grunt) {
     'concurrent:test',
     'autoprefixer',
     'karma:unit:start',
-    'watch:karma'
+    'watch:karma',
+    'protractor:run'
   ]);
 
   grunt.registerTask('build', [
