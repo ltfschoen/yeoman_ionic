@@ -15,3 +15,12 @@ map {
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
+.thumb {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+}
+p { 
+  display: inline-block;
+}
+

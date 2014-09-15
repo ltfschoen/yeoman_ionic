@@ -51,5 +51,15 @@ describe('YeomanIonic App', function() {
       ]);
 
     });
+
+    it('should render sentence specific links', function() {
+      var query = element(by.model('query'));
+      query.sendKeys('hello');
+      element.all(by.css('.sentences li a')).first().click();
+      browser.getLocationAbsUrl().then(function(url) {
+        expect(url.split('#')[1]).toBe('/sentences/hello');
+      });
+    });
+
   });
 });
