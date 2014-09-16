@@ -1,7 +1,8 @@
 {
   "description": "Hello is a greeting",
   "images": [
-    "images/hello.jpg"
+    "images/hello.jpg",
+    "images/ionic.png"
   ],
   "storage": {
     "brain": "high",

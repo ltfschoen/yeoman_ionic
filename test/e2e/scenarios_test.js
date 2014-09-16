@@ -87,5 +87,18 @@ describe('YeomanIonic App', function() {
       expect(list.count()).toBe(1);
     });
 
+    // verify that main image set to first sentence image by default
+    it('should display first phone image as the main phone image', function() {
+      expect(element(by.css('img.sentence')).getAttribute('src')).toMatch('/images/hello.jpg');
+    });
+    // clicks several thumbnail images to verify that main image changed
+    it('should swap main image if a thumbnail image is clicked on', function() {
+      element(by.css('.sentence-thumbnails li:nth-child(1) img')).click();
+      expect(element(by.css('img.sentence')).getAttribute('src')).toMatch('/images/hello.jpg');
+
+      element(by.css('.sentence-thumbnails li:nth-child(2) img')).click();
+      expect(element(by.css('img.sentence')).getAttribute('src')).toMatch('/images/ionic.png');
+    });
+
   });
 });

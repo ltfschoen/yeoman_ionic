@@ -76,6 +76,12 @@ yeomanIonicControllers.controller('MapDetailCtrl', [
     $http.get('data/sentences/' + $routeParams.sentenceId + '.json').success(function(data) {
       console.log("Detailed JSON Grabbed");
       $scope.sentence = data;
+      $scope.mainImageUrl = data.images[0]; // default image
     });
+  
+    // event handler to change value of default main image
+    $scope.setImage = function(imageUrl) {
+      $scope.mainImageUrl = imageUrl;
+    }
   }
 ]);
