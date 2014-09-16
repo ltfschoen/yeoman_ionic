@@ -1,12 +1,15 @@
-<img ng-src="{{sentence.images[0]}}" class="sentence">
+<!-- <img ng-src="{{sentence.images[0]}}" class="sentence"> -->
+<img ng-src="{{mainImageUrl}}" class="sentence">
 
 <h1>{{sentence.name}}</h1>
 
 <p>{{sentence.description}}</p>
 
-<ul>
+<ul class="sentence-thumbnails">
   <li ng-repeat="img in sentence.images">
-    <img ng-src="{{img}}" class="sentence-thumbnails">
+    <!-- register ngClick event handler with thumbnail images -->
+    <!-- to change the value of the mainImageUrl property to URL of thumbnail -->
+    <img ng-src="{{img}}" ng-click="setImage(img)" class="thumbs">
   </li>
 </ul>
 
