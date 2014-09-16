@@ -6,6 +6,8 @@
 </ion-header-bar>
 
 <ion-content scroll="false">
+
+  <map on-create="mapCreated(map)"></map>
   <!-- dynamic content. -->
   <!-- Angular refreshes binding points. Updates view -->
   <!-- HTML template (view) as projection of model --> 
@@ -17,7 +19,7 @@
         <!--Sidebar content-->
         
         <!-- Angular data-binds input box name on page load to matching data model -->
-        Search: <input ng-model="query">
+        Search: <input ng-model="query"><br>
 
         <!-- two-way data-binding b/w Select element and orderProp Model -->
         <!-- added 'age' property to each sentence record to order by age --> 
@@ -62,8 +64,6 @@
       </div>
     </div>
   </div>
-
-  <map on-create="mapCreated(map)"></map>
 
 </ion-content>
 
