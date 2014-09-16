@@ -2,7 +2,7 @@
 
 var yeomanIonicControllers = angular.module('yeomanIonicControllers', [])
 
-yeomanIonicControllers.controller('MapCtrl', ['$scope', '$ionicLoading', '$http', function($scope, $ionicLoading, $http) {
+yeomanIonicControllers.controller('MapCtrl', ['$scope', '$ionicLoading', '$http',  function($scope, $ionicLoading, $http) {
 
   // $http service for HTTP request to fetch data from web server asyncronously
   // AngularJS detects and parses the JSON response automatically
@@ -73,9 +73,16 @@ yeomanIonicControllers.controller('MapDetailCtrl', [
   '$routeParams', 
   '$http', 
   function($scope, $routeParams, $http) {
+    // sentences/hello.json
     $http.get('data/sentences/' + $routeParams.sentenceId + '.json').success(function(data) {
-      console.log("Detailed JSON Grabbed");
-      $scope.sentence = data;
+      console.log("Detailed JSON Fetched");
+      $scope.sentenceHello = data;
     });
+    // sentences.json
+    $http.get('data/sentences.json').success(function(data) {
+      console.log("Main JSON Fetched");
+      $scope.sentenceMain = data;
+    });
+
   }
 ]);
