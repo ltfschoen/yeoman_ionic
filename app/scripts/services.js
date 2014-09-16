@@ -8,7 +8,7 @@ var yeomanIonicServices = angular.module('yeomanIonicServices', ['ngResource']);
 yeomanIonicServices.factory('Sentences', ['$resource',
   function($resource){
     return $resource('data/sentences.json', {}, {
-      query: {method:'GET', isArray:true}
+      query: {method:'GET', isArray:true, cache: true}
     });
   }
 ]);
