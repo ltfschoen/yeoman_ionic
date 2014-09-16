@@ -78,8 +78,13 @@ describe('YeomanIonic App', function() {
       browser.get('index.html#/sentences/hello');
     });
 
-    it('should display placeholder page with sentenceId', function() {
-      expect(element(by.binding('sentenceId')).getText()).toBe('hello');
+    it('should display correct description for hello', function() {
+      expect(element(by.binding('sentence.description')).getText()).toBe('Hello is a greeting');
+    });
+
+    it('should display list of 1 thumbnail images on the hello detail page', function() {
+      var list = element.all(by.css('.sentence-thumbnails'));
+      expect(list.count()).toBe(1);
     });
 
   });

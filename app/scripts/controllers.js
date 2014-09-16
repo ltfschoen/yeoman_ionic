@@ -73,7 +73,8 @@ yeomanIonicControllers.controller('MapDetailCtrl', [
   '$routeParams', 
   '$http', 
   function($scope, $routeParams, $http) {
-    $http.get('sentences/' + $routeParams.sentenceId + '.json').success(function(data) {
+    $http.get('data/sentences/' + $routeParams.sentenceId + '.json').success(function(data) {
+      console.log("Detailed JSON Grabbed");
       $scope.sentence = data;
     });
   }
