@@ -2,6 +2,9 @@
 
 describe('Controller: MapCtrl', function(){
 
+  // define so overcome JSHint problems
+  var chai;
+
   var should = chai.should();
 
   var MapCtrl,
@@ -72,7 +75,7 @@ describe('Controller: MapCtrl', function(){
     $httpBackend.flush();
 
     // expect(scope.sentences).toEqual([{name: 'Hello'},{name: 'Greetings'}]);
-    scope.sentences.should.have.value("[{name: 'Hello'},{name: 'Greetings'}]");
+    scope.sentences.should.have.value('[{name: "Hello"},{name: "Greetings"}]');
   });
 
 });
