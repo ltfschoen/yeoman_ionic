@@ -5,7 +5,8 @@ var yeomanIonicApp = angular.module('yeomanIonicApp', [
   'config', 
   'ngRoute',
   'yeomanIonicControllers', 
-  'yeomanIonicDirectives'
+  'yeomanIonicDirectives',
+  'yeomanIonicServices'
 ]);
 
 yeomanIonicApp.config(['$routeProvider',
