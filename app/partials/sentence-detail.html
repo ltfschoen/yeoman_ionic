@@ -1,27 +1,31 @@
-<img ng-src="{{sentenceHello.images[0]}}" class="sentence">
+<ion-content scroll="true">
 
-<h1>{{ sentenceMain[0].name }} {{ sentenceMain[0].name | checkmark }}</h1>
+  <img ng-src="{{sentenceHello.images[0]}}" class="sentence">
 
-<p>{{ sentenceHello.description }} {{ sentenceHello.description | checkmark }}</p>
+  <h1>{{ sentenceMain[0].name }} {{ sentenceMain[0].name | checkmark }}</h1>
 
-<ul>
-  <li ng-repeat="img in sentenceHello.images">
-    <img ng-src="{{img}}" class="sentence-thumbnails">
-  </li>
-</ul>
+  <p>{{ sentenceHello.description }} {{ sentenceHello.description | checkmark }}</p>
 
-<ul class="specs">
-  <li>
-    <dl>
-      <dt>Storage</dt>
-      <dd>{{ sentenceHello.storage.brain }} {{ sentenceHello.storage.brain | checkmark }}</dd>
-      <dd>{{ sentenceHello.storage.dictionary }} {{ sentenceHello.storage.dictionary | checkmark }}</dd>
-    </dl>
-  </li>
-</ul>
+  <ul>
+    <li ng-repeat="img in sentenceHello.images">
+      <img ng-src="{{img}}" class="sentence-thumbnails">
+    </li>
+  </ul>
 
-<h1>Experiments</h1>
-<h2>sentenceMain JSON is:</h2>
-<p>{{ sentenceMain | json }}</p>
-<h2>sentenceHello JSON is:</h2>
-<p>{{ sentenceHello | json }}</p>
+  <ul class="specs">
+    <li>
+      <dl>
+        <dt>Storage</dt>
+        <dd>{{ sentenceHello.storage.brain }} {{ sentenceHello.storage.brain | checkmark }}</dd>
+        <dd>{{ sentenceHello.storage.dictionary }} {{ sentenceHello.storage.dictionary | checkmark }}</dd>
+      </dl>
+    </li>
+  </ul>
+
+  <h1>Experiments</h1>
+  <h2>sentenceMain JSON is:</h2>
+  <p>{{ sentenceMain | json }}</p>
+  <h2>sentenceHello JSON is:</h2>
+  <p>{{ sentenceHello | json }}</p>
+  
+</ion-content>

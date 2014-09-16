@@ -1,13 +1,13 @@
 <ion-header-bar class="bar-stable">
   <h1 class="title">Map for Luke</h1>
-  <button id="map">Show Map</button>
+  Display map? <input id="map" type="checkbox" ng-model="checked" ng-init="checked=true" />
   <!-- 3. POLYFILL - Declare the element. Configure using its attributes. -->
   <core-ajax url="//example.com/json" handleAs="json"></core-ajax>
 </ion-header-bar>
 
-<ion-content scroll="false">
+<ion-content scroll="true">
 
-  <map my-draggable on-create="mapCreated(map)"></map>
+  <map my-draggable ng-if="checked" class="animate-map-if" on-create="mapCreated(map)"></map>
   <!-- dynamic content. -->
   <!-- Angular refreshes binding points. Updates view -->
   <!-- HTML template (view) as projection of model --> 
