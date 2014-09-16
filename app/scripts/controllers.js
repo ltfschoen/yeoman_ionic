@@ -67,8 +67,14 @@ yeomanIonicControllers.controller('MapCtrl', ['$scope', '$ionicLoading', '$http'
   };
 }]);
 
-yeomanIonicControllers.controller('MapDetailCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
-
-  $scope.sentenceId = $routeParams.sentenceId;
-
-}]);
+// $http service used to fetch JSON files
+yeomanIonicControllers.controller('MapDetailCtrl', [
+  '$scope', 
+  '$routeParams', 
+  '$http', 
+  function($scope, $routeParams, $http) {
+    $http.get('sentences/' + $routeParams.sentenceId + '.json').success(function(data) {
+      $scope.sentence = data;
+    });
+  }
+]);
