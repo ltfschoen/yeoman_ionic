@@ -45,12 +45,14 @@
             <!-- stops HTML template being briefly displayed flicker effect -->
             <!-- dynamically generate links using moustache binding -->
             <!-- ngSrc Directive for image attribute binding instead of just 'src' that grabs only the literal text -->
-            <a href="#/sentences/{{sentence.id}}"><img class="thumb" ng-src="{{sentence.imageUrl}}"/></a>
+            <my-dialog ng-hide="dialogIsHidden" on-close="hideDialog()">
+            <a href="#/sentences/{{sentence.id}}"><img class="thumb" ng-src="{{sentence.imageUrl}}"/></a></my-dialog>
             <span>{{sentence.name}}</span> |
             <p>{{sentence.snippet}}</p>
             <!-- ngBindTemplate allows multiple {{ }} -->
             <a href="{{sentence.name}}-{{sentence.snippet}}-{{ query }}" ng-bind-template="{{ query }}">title</a>
           </li>
+          
         </ul>
 
         <!-- repeater to create a simple table with i incremented by 1 in binding -->

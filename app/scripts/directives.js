@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('yeomanIonicDirectives', [])
+var yeomanIonicDirectives = angular.module('yeomanIonicDirectives', [])
 
-.directive('map', function() {
+yeomanIonicDirectives.directive('map', function() {
   return {
     restrict: 'E',
     scope: {
@@ -28,5 +28,16 @@ angular.module('yeomanIonicDirectives', [])
 
       google.maps.event.addDomListener(window, 'load', initialize);
     }
+  };
+});
+
+yeomanIonicDirectives.directive('myDialog', function() {
+  return {
+    restrict: 'E',
+    transclude: true,
+    scope: {
+      'close': '&onClose'
+    },
+    templateUrl: 'shared/my-dialog-close.html'
   };
 });

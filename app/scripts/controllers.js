@@ -75,17 +75,6 @@ yeomanIonicControllers.controller('MapCtrl', ['$scope', '$ionicLoading', '$http'
 
 }]);
 
-yeomanIonicControllers.directive('myDialog', function() {
-  return {
-    restrict: 'E',
-    transclude: true,
-    scope: {
-      'close': '&onClose'
-    },
-    templateUrl: 'shared/my-dialog-close.html'
-  };
-});
-
 yeomanIonicControllers.controller('MapDetailCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
 
   $scope.sentenceId = $routeParams.sentenceId;
