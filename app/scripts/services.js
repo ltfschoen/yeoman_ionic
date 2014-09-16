@@ -5,10 +5,18 @@ var yeomanIonicServices = angular.module('yeomanIonicServices', ['ngResource']);
 
 // pass in service name and factory fn
 // declare dependencies on services to inject using fn args
+yeomanIonicServices.factory('Sentences', ['$resource',
+  function($resource){
+    return $resource('data/sentences.json', {}, {
+      query: {method:'GET', isArray:true, cache: true}
+    });
+  }
+]);
+
 yeomanIonicServices.factory('Sentence', ['$resource',
   function($resource){
-    return $resource('sentences/:sentenceId.json', {}, {
-      query: {method:'GET', params:{sentenceId:'sentences'}, isArray:true}
+    return $resource('data/sentences/:sentenceId.json', {}, {
+      query: {method:'GET', params:{sentenceId:'sentences'}, isArray:true, cache: true}
     });
   }
 ]);

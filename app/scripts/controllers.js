@@ -2,40 +2,13 @@
 
 var yeomanIonicControllers = angular.module('yeomanIonicControllers', [])
 
-yeomanIonicControllers.controller('MapCtrl', ['$scope', '$ionicLoading', '$http', function($scope, $ionicLoading, $http) {
+yeomanIonicControllers.controller('MapCtrl', ['$scope', '$ionicLoading', 'Sentences', function($scope, $ionicLoading, Sentences) {
 
-  // $http service for HTTP request to fetch data from web server asyncronously
-  // AngularJS detects and parses the JSON response automatically
-  // $http service returns a promise object with a success method
+  // $resource ngResource service for RESTful
   // assign dataset to scope of the controller as a Model named 'sentences'
-  $http({
-    method: 'GET',
-    url: 'data/sentences.json'
-  }).
-    success(function(data, status, headers, config) {
-      // this callback will be called asynchronously
-      // when the response is available
-      console.log('HTTP Request - Success');
-      console.log('Data is: ' + data);
-      console.log('Status is: ' + status);
-      console.log('Headers is: ' + headers);
-      console.log('Config is: ' + config);
-      console.log('angular.fromJson(data) ==> ' + angular.fromJson(data));
-      // console.log('eval(data) ==> ' + eval(data));  
-      // $scope.sentences = eval(data); // security issues
-      // $scope.sentences = angular.fromJson(data); // works but not required
-      $scope.sentences = data;
-      console.log(typeof($scope.sentences));
-
-      // pre-process HTTP response by limiting sentences to first 4 on the list
-      $scope.sentences = data.splice(0, 4);
-    }).
-    error(function(data, status, headers, config) {
-      // called asynchronously if an error occurs
-      // or server returns response with an error status.
-      console.log('HTTP Request - Error');
-      console.log('Data is: ' + data);
-    });
+  // 'Sentences.query()' GET request to 'data/sentences.json'
+  // relies on future object and data-binding to query all sentences
+  $scope.sentences = Sentences.query();
 
   // dataset moved to data/sentences.json
 
@@ -67,21 +40,21 @@ yeomanIonicControllers.controller('MapCtrl', ['$scope', '$ionicLoading', '$http'
   };
 }]);
 
-// $http service used to fetch JSON files
+// ngResource (instead of $http) service used to fetch JSON files
 yeomanIonicControllers.controller('MapDetailCtrl', [
   '$scope', 
   '$routeParams', 
-  '$http', 
-  function($scope, $routeParams, $http) {
-    $http.get('data/sentences/' + $routeParams.sentenceId + '.json').success(function(data) {
-      console.log("Detailed JSON Grabbed");
-      $scope.sentence = data;
-      $scope.mainImageUrl = data.images[0]; // default image
-    });
+  'Sentence', 
+  function($scope, $routeParams, Sentence) {
+    // 'Sentence.get()' GET request to 'data/sentences/hello.json'
+    // '.get' instead of just '.query' adds a callback to process the server response
+    $scope.sentence = Sentence.get({sentenceId: $routeParams.sentenceId}, function(sentence) {
+      $scope.mainImageUrl = sentence.images[0]; // default image
   
-    // event handler to change value of default main image
-    $scope.setImage = function(imageUrl) {
-      $scope.mainImageUrl = imageUrl;
-    }
+      // event handler to change value of default main image
+      $scope.setImage = function(imageUrl) {
+        $scope.mainImageUrl = imageUrl;
+      }
+    });
   }
 ]);
