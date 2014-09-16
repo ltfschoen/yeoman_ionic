@@ -1,4 +1,5 @@
 // INSTRUCTIONS: protractor protractor.conf.js (at command prompt)
+'use strict';
 
 describe('YeomanIonic App', function() {
 
@@ -11,6 +12,9 @@ describe('YeomanIonic App', function() {
 
     // verify search box and repeater are correctly wired together
     it('should filter the sentences list as user types into the search box', function() {
+
+      // define so overcome JSHint problems
+      var element, by;
 
       var sentenceList = element.all(by.repeater('sentence in sentences'));
       var query = element(by.model('query'));
@@ -27,6 +31,9 @@ describe('YeomanIonic App', function() {
 
     // verify ordering mechanism of select box is working
     it('should control sentence order via the drop down select box', function() {
+      // define so overcome JSHint problems
+      var element, by;
+
       var sentenceNameColumn = element.all(by.repeater('sentence in sentences').column('{{sentence.name}}'));
       var query = element(by.model('query'));
 
@@ -41,20 +48,23 @@ describe('YeomanIonic App', function() {
 
       // should match on 'ee' common to both sentences
       expect(getNames()).toEqual([
-        "Greetings",
-        "Cheerio"
+        'Greetings',
+        'Cheerio'
       ]);
 
       element(by.model('orderProp')).element(by.css('option[value="name"]')).click();
 
       expect(getNames()).toEqual([
-        "Cheerio",
-        "Greetings"
+        'Cheerio',
+        'Greetings'
       ]);
 
     });
 
     it('should render sentence specific links', function() {
+      // define so overcome JSHint problems
+      var element, by;
+
       var query = element(by.model('query'));
       query.sendKeys('hello');
       element.all(by.css('.sentences li a')).first().click();
@@ -79,10 +89,15 @@ describe('YeomanIonic App', function() {
     });
 
     it('should display correct description for hello', function() {
+      // define so overcome JSHint problems
+      var element, by;
+
       expect(element(by.binding('sentence.description')).getText()).toBe('Hello is a greeting');
     });
 
     it('should display list of 1 thumbnail images on the hello detail page', function() {
+      // define so overcome JSHint problems
+      var element, by;
       var list = element.all(by.css('.sentence-thumbnails'));
       expect(list.count()).toBe(1);
     });

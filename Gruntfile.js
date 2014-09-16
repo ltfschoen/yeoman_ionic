@@ -134,7 +134,11 @@ module.exports = function (grunt) {
         options: {
           jshintrc: 'test/.jshintrc'
         },
-        src: ['test/unit/**/*.js']
+        src: [
+          'test/e2e/**/*.js',
+          'test/spec/**/*.js',
+          'test/unit/**/*.js'
+        ]
       }
     },
 
@@ -372,7 +376,8 @@ module.exports = function (grunt) {
           '<%= yeoman.app %>/bower_components/angular-mocks/angular-mocks.js',
           '<%= yeoman.app %>/<%= yeoman.scripts %>/**/*.js',
           'test/mock/**/*.js',
-          'test/spec/**/*.js'
+          'test/spec/**/*.js',
+          'test/unit/**/*.js'
         ],
         autoWatch: false,
         reporters: ['dots', 'coverage'],
@@ -494,7 +499,7 @@ module.exports = function (grunt) {
   // we don't have to run the karma test server as part of `grunt serve`
   grunt.registerTask('watch:karma', function () {
     var karma = {
-      files: ['<%= yeoman.app %>/<%= yeoman.scripts %>/**/*.js', 'test/spec/**/*.js', 'test/e2e/**/*.js'],
+      files: ['<%= yeoman.app %>/<%= yeoman.scripts %>/**/*.js', 'test/spec/**/*.js', 'test/e2e/**/*.js', 'test/unit/**/*.js'],
       tasks: ['newer:jshint:test', 'karma:unit:run']
     };
     grunt.config.set('watch', karma);

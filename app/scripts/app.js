@@ -1,11 +1,13 @@
 'use strict';
 
+// module dependencies for main app module
 var yeomanIonicApp = angular.module('yeomanIonicApp', [
   'ionic', 
   'config', 
   'ngRoute',
   'yeomanIonicControllers', 
-  'yeomanIonicDirectives'
+  'yeomanIonicDirectives',
+  'yeomanIonicFilters'
 ]);
 
 yeomanIonicApp.config(['$routeProvider',

@@ -32,6 +32,8 @@
         </select>
 
       </div>
+    </div>
+    <div class="row">
       <div class="col-md-10">
         <!--Body content-->
 
@@ -51,7 +53,7 @@
             <span>{{sentence.name}}</span> |
             <p>{{sentence.snippet}}</p>
             <!-- ngBindTemplate allows multiple {{ }} -->
-            <a href="{{sentence.name}}-{{sentence.snippet}}-{{ query }}" ng-bind-template="{{ query }}">title</a>
+            <a href="{{sentence.name}}-{{sentence.snippet}}-{{ query }}" ng-bind-template="{{ query | uppercase }}">title</a>
           </li>
         </ul>
 
