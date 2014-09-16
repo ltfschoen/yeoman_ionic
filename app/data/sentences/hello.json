@@ -1,0 +1,10 @@
+{
+  "description": "Hello is a greeting",
+  "images": [
+    "images/hello.jpg"
+  ],
+  "storage": {
+    "brain": "high",
+    "dictionary": "low"
+  }
+}
