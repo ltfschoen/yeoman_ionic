@@ -1,2 +1,21 @@
-<!-- sentenceId Expression to be defined in MapDetailCtrl controller -->
-TBD: detail view for <span>{{sentenceId}}</span>
+<img ng-src="{{sentence.images[0]}}" class="sentence">
+
+<h1>{{sentence.name}}</h1>
+
+<p>{{sentence.description}}</p>
+
+<ul>
+  <li ng-repeat="img in sentence.images">
+    <img ng-src="{{img}}" class="sentence-thumbnails">
+  </li>
+</ul>
+
+<ul class="specs">
+  <li>
+    <dl>
+      <dt>Storage</dt>
+      <dd>{{sentence.storage.brain}}</dd>
+      <dd>{{sentence.storage.dictionary}}</dd>
+    </dl>
+  </li>
+</ul>
