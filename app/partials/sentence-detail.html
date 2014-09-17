@@ -1,5 +1,24 @@
 <!-- <img ng-src="{{sentence.images[0]}}" class="sentence"> -->
-<img ng-src="{{mainImageUrl}}" class="sentence">
+
+<!-- ANIMATION SUMMARY -->
+<!-- -->
+<!-- watch ng-class Directive. when 'active' class is true -->
+<!-- apply it to the image element and render it visible, otherwise hide it -->
+<!-- always one image with 'active' class and therefore visible -->
+<!-- -->
+<!-- BEFORE ANIMATION-->
+<!-- before 'active' class is added to element, 'active-add' and 'active-add-active' -->
+<!-- are added to signal to AngularJS to fire off an animation -->
+<!-- -->
+<!-- after 'active' class is removed from element, 'active-remove' and 'active-remove-active' -->
+<!-- are applied to element to trigger another animation -->
+
+<div class="sentence-images">
+  <img ng-src="{{img}}" 
+       class="sentence"
+       ng-repeat="img in sentence.images"
+       ng-class="{active:mainImageUrl==img}">
+</div>
 
 <h1>{{sentence.name}}</h1>
 
@@ -9,7 +28,9 @@
   <li ng-repeat="img in sentence.images">
     <!-- register ngClick event handler with thumbnail images -->
     <!-- to change the value of the mainImageUrl property to URL of thumbnail -->
-    <img ng-src="{{img}}" ng-click="setImage(img)" class="thumbs">
+    <img ng-src="{{img}}" 
+         ng-mouseenter="setImage(img)" 
+         class="thumbs">
   </li>
 </ul>
 

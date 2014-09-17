@@ -26,3 +26,28 @@ p {
 input {
   max-width: 150px;
 }
+
+// ANIMATIONS (DETAILED VIEW)
+.sentence-images {
+  background-color: white;
+  width: 450px;
+  height: 450px;
+  overflow: hidden;
+  position: relative;
+  float: left;
+}
+
+img.sentence {
+  float: left;
+  margin-right: 3em;
+  margin-bottom: 2em;
+  background-color: white;
+  padding: 2em;
+  height: 400px;
+  width: 400px;
+  display: none;
+}
+
+img.sentence:first-child {
+  display: block;
+}
