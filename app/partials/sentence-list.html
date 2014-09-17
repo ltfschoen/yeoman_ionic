@@ -40,7 +40,8 @@
           <!-- Angular filter fn to process input for ngRepeat Directive -->
           <!-- it creates a new array of records matching the query --> 
           <!-- orderProp Model is input to orderBy Filter -->
-          <li ng-repeat="sentence in sentences | filter:query | orderBy:orderProp">
+          <!-- class 'sentence-listing' applied to hook in CSS animation code -->
+          <li ng-repeat="sentence in sentences | filter:query | orderBy:orderProp"  class="sentence-listing">
             <!-- bindings refer to app model setup in controller -->
             <!-- ngBind or ngBindTemplate Directives used instead of handlebars in innerHTML section so invisible to user while page loading -->
             <!-- ngCloak (works w IE7) hides attr until compiled by Angular -->
