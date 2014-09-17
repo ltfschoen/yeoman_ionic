@@ -35,8 +35,11 @@
   <!-- stops HTML template being briefly displayed flicker effect -->
   <body ng-cloak class="ng-cloak">
 
-    <!-- ngView Directive includes view template for current route in layout template -->
-    <div ng-view></div>
+    <!-- 'view-container' and 'view-frame' to animate ngView with CSS Keyframe Animations (for transitions between route changes) -->
+    <div class="view-container">
+      <!-- ngView Directive includes view template for current route in layout template -->
+      <div ng-view class="view-frame"></div>
+    </div>
 
     <!-- build:js scripts/vendor.js -->
     <!-- This Google Maps API file was downloaded from: -->

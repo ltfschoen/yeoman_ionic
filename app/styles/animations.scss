@@ -1,3 +1,5 @@
+// CSS NG-REPEAT ANIMATIONS
+
 // CSS class with animation hooks that occur when items inserted/removed from list
 // depending on data being passed to the ng-repeat attribute
 // Note: animation lifecycle
@@ -44,4 +46,64 @@
   height: 0;
   padding-top: 0;
   padding-bottom: 0;
+}
+
+
+
+// // CSS NG-VIEW ANIMATIONS (TRANSITIONS FADE-IN / FADE-OUT B/W PAGES)
+
+// REMOVED THIS PART AS DOES NOT WORK
+// ng-view directive is nested within parent element of class 'view-container'
+// .view-container {
+//   position: relative; // position ng-view relative to its parent as it animates transitions
+// }
+
+.view-frame.ng-enter, .view-frame.ng-leave {
+  background: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.view-frame.ng-enter {
+  -webkit-animation: 0.5s fade-in;
+  -moz-animation: 0.5s fade-in;
+  -o-animation: 0.5s fade-in;
+  animation: 0.5s fade-in;
+  z-index: 100;
+}
+
+.view-frame.ng-leave {
+  -webkit-animation: 0.5s fade-out;
+  -moz-animation: 0.5s fade-out;
+  -o-animation: 0.5s fade-out;
+  animation: 0.5s fade-out;
+  z-index:99;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@-moz-keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@-webkit-keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@-moz-keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@-webkit-keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
