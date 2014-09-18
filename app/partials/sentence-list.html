@@ -7,7 +7,39 @@
 
 <ion-content scroll="false">
 
+  <!-- tab bar -->
+  <section ng-init="tab = 1">
+    <ul class="nav nav-health">
+      <li ng-class="{ active:tab === 1 }">
+        <a href ng-click="tab = 1">Info</a>
+      </li>
+      <li ng-class="{ active:tab === 2 }">
+        <a href ng-click="tab = 2">Contents</a>
+      </li>
+      <li ng-class="{ active:tab === 3 }">
+        <a href ng-click="tab = 3">Specific</a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- tab content panels -->
+  <div class="panel" ng-show="tab === 1">
+    <h4>{{ tab }}</h4>
+    <p>{{product.info}}</p>
+  </div>
+
+  <div class="panel" ng-show="tab === 2">
+    <h4>{{ tab }}</h4>
+    <blockquote>None yet</blockquote>
+  </div>
+
+  <div class="panel" ng-show="tab === 3">
+    <h4>{{ tab }}</h4>
+    <blockquote>None yet</blockquote>
+  </div>
+
   <map on-create="mapCreated(map)"></map>
+
   <!-- dynamic content. -->
   <!-- Angular refreshes binding points. Updates view -->
   <!-- HTML template (view) as projection of model --> 
