@@ -2,9 +2,9 @@
 
   'use strict';
 
-  var yeomanIonicControllers = angular.module('yeomanIonicControllers', [])
+  var mapControllers = angular.module('mapControllers', [])
 
-  yeomanIonicControllers.controller('MapCtrl', ['$scope', '$ionicLoading', 'Sentences', function($scope, $ionicLoading, Sentences) {
+  mapControllers.controller('MapCtrl', ['$scope', '$ionicLoading', 'Sentences', function($scope, $ionicLoading, Sentences) {
 
     // $resource ngResource service for RESTful
     // assign dataset to scope of the controller as a Model named 'sentences'
@@ -43,7 +43,7 @@
   }]);
 
   // ngResource (instead of $http) service used to fetch JSON files
-  yeomanIonicControllers.controller('MapDetailCtrl', [
+  mapControllers.controller('MapDetailCtrl', [
     '$scope', 
     '$routeParams', 
     'Sentence', 

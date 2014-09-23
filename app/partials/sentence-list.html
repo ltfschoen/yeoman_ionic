@@ -11,16 +11,16 @@
   <health-tabs></health-tabs>
 
   <!-- tab content panels -->
-  <!-- tab content info custom directive -->
-  <health-tab-info></health-tab-info>
+  <div class="panel" ng-show="tab === 1">
+    <h4>{{ tab }}</h4>
+    <p>{{product.info}}</p>
+  </div>
 
-  <!-- tab 2 contents name and custom directive TBC -->
   <div class="panel" ng-show="tab === 2">
     <h4>{{ tab }}</h4>
     <blockquote>None yet</blockquote>
   </div>
 
-  <!-- tab 3 contents name and custom directive TBC -->
   <div class="panel" ng-show="tab === 3">
     <h4>{{ tab }}</h4>
     <blockquote>None yet</blockquote>

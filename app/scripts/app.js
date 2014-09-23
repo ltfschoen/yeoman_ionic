@@ -6,8 +6,9 @@
     'ionic', 
     'config', 
     'ngRoute',
-    'yeomanIonicControllers', 
-    'yeomanIonicDirectives',
+    'mapControllers', 
+    'mapDirectives',
+    'healthDirectives',
     'yeomanIonicServices',
     'yeomanIonicAnimations'
   ]);

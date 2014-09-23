@@ -2,9 +2,9 @@
 
   'use strict';
 
-  var yeomanIonicDirectives = angular.module('yeomanIonicDirectives', [])
+  var mapDirectives = angular.module('mapDirectives', [])
 
-  yeomanIonicDirectives.directive('map', 
+  mapDirectives.directive('map', 
     function() {
       return {
         restrict: 'E',
@@ -33,26 +33,5 @@
       };
     }
   );
-
-  // custom directive to tab bar
-  yeomanIonicDirectives.directive('healthTabs', 
-    function() {
-      return {
-        restrict: 'E',
-        templateUrl: 'partials/health-tabs.html'
-      };
-    }
-  );
-
-  // custom directive for tab no. 1
-  yeomanIonicDirectives.directive('healthTabInfo', 
-    function() {
-      return {
-        restrict: 'E',
-        templateUrl: 'partials/health-tab-info.html'
-      };
-    }
-  );
-
 
 })();
