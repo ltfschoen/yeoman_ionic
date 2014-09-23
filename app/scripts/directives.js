@@ -44,15 +44,4 @@
     }
   );
 
-  // custom directive for tab no. 1
-  yeomanIonicDirectives.directive('healthTabInfo', 
-    function() {
-      return {
-        restrict: 'E',
-        templateUrl: 'partials/health-tab-info.html'
-      };
-    }
-  );
-
-
 })();
