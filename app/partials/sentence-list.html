@@ -7,32 +7,20 @@
 
 <ion-content scroll="false">
 
-  <!-- tab bar -->
-  <section ng-init="tab = 1">
-    <ul class="nav nav-health">
-      <li ng-class="{ active:tab === 1 }">
-        <a href ng-click="tab = 1">Info</a>
-      </li>
-      <li ng-class="{ active:tab === 2 }">
-        <a href ng-click="tab = 2">Contents</a>
-      </li>
-      <li ng-class="{ active:tab === 3 }">
-        <a href ng-click="tab = 3">Specific</a>
-      </li>
-    </ul>
-  </section>
+  <!-- tab bar custom directive -->
+  <health-tabs></health-tabs>
 
   <!-- tab content panels -->
-  <div class="panel" ng-show="tab === 1">
-    <h4>{{ tab }}</h4>
-    <p>{{product.info}}</p>
-  </div>
+  <!-- tab content info custom directive -->
+  <health-tab-info></health-tab-info>
 
+  <!-- tab 2 contents name and custom directive TBC -->
   <div class="panel" ng-show="tab === 2">
     <h4>{{ tab }}</h4>
     <blockquote>None yet</blockquote>
   </div>
 
+  <!-- tab 3 contents name and custom directive TBC -->
   <div class="panel" ng-show="tab === 3">
     <h4>{{ tab }}</h4>
     <blockquote>None yet</blockquote>
