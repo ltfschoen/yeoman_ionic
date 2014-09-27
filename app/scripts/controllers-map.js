@@ -46,7 +46,8 @@
     // default value
     $scope.health = { conditionEstimate: 0 };
 
-    // computed when user changes input value (ng-change Directive)
+    // computed when user changes input value 
+    // Note: ng-change Directive not required as using $watch instead
     $scope.computeNeeded = function () {
       $scope.health.needed = $scope.health.conditionEstimate * 5;
     };
