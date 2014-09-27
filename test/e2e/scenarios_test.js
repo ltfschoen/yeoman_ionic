@@ -39,6 +39,8 @@ describe('YeomanIonic App', function() {
       // narrow dataset to make test assertions shorter
       query.sendKeys('ee');
 
+      waits(1000); // wait 1 second
+      
       // should match on 'ee' common to both sentences
       expect(getNames()).toEqual([
         "Greetings",
