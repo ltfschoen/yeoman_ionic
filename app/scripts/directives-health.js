@@ -9,7 +9,9 @@
     function() {
       return {
         restrict: 'E',
-        templateUrl: 'partials/health-tabs.html'
+        templateUrl: 'partials/health-tabs.html',
+        replace: true, // replaces <health-tabs> entirely with partial
+        cache: true
       };
     }
   );
