@@ -52,8 +52,27 @@
       $scope.health.needed = $scope.health.conditionEstimate * 5;
     };
 
+    $scope.requestQuotation = function () {
+      if ($scope.health > 100) {
+        console.log("Sorry, you're already healthy with health of: " + $scope.health.needed);
+      } else {
+        $scope.health.quote = $scope.health.conditionEstimate * 50;
+        console.log("Quote provided: " + $scope.health.quote);
+        
+      };
+    };
+
+    // Note: 'shareQuotation' is not $watched, so output only after user clicks the "Share Quotation" button
+    $scope.shareQuotation = function () {
+      var shareFee = 20;
+      $scope.health.quoteShared = $scope.health.quote + shareFee;
+      console.log("Quote after quote sharing fees: " + $scope.health.quoteShared);
+    };
+
     // watch operations of this AngularJS expression string
     $scope.$watch('health.conditionEstimate', $scope.computeNeeded);
+    $scope.$watch('health.conditionEstimate', $scope.requestQuotation);
+    // $scope.$watch('health.conditionEstimate', $scope.shareQuotation);
 
   }]);
 

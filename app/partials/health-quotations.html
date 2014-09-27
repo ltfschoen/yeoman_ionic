@@ -1,0 +1,9 @@
+<form ng-submit="shareQuotation()">
+  Health: <input ng-model="health.conditionEstimate"><br> 
+  <button>Share Quotation</button><br>
+  Recommended Dosage: {{health.needed}}<br>
+  Quotation: {{health.quote | currency}}<br>
+  Shared Quotation: {{health.quoteShared | currency}}<br>
+</form><br>
+
+Note: Standard fee of $20.00 applies for sharing the quotation.

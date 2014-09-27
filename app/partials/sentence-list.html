@@ -18,12 +18,14 @@
 
   <div class="panel" ng-show="tab === 2">
     <h4>{{ tab }}</h4>
-    <blockquote>None yet</blockquote>
+    <h3>Health Condition Estimate</h3>
+    <health-conditions></health-conditions>
   </div>
 
   <div class="panel" ng-show="tab === 3">
     <h4>{{ tab }}</h4>
-    <blockquote>None yet</blockquote>
+    <h3>Health Quotation</h3>
+    <health-quotations></health-quotations>
   </div>
 
   <map on-create="mapCreated(map)"></map>
@@ -50,8 +52,6 @@
           <option value="snippet">Newest</option>
           <option value="-snippet">Oldest</option> <!-- reverse sort order -->
         </select>
-
-        <health-conditions></health-conditions>
 
       </div>
       <div class="col-md-10">
