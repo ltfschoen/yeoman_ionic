@@ -51,6 +51,9 @@
       $scope.health.needed = $scope.health.conditionEstimate * 5;
     };
 
+    // watch operations of this AngularJS expression string
+    $scope.$watch('health.conditionEstimate', $scope.computeNeeded);
+
   }]);
 
   // ngResource (instead of $http) service used to fetch JSON files
