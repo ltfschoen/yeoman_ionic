@@ -40,18 +40,24 @@
       <div class="col-md-2">
         <!--Sidebar content-->
         
-        <!-- Angular data-binds input box name on page load to matching data model -->
-        Search: <input ng-model="query" focus><br>
+        <form name="searchForm">
+          <!-- Angular data-binds input box name on page load to matching data model -->
+          Search: <input name="sentenceName" ng-model="query" ng-minlength="2" focus><br>
 
-        <!-- two-way data-binding b/w Select element and orderProp Model -->
-        <!-- added 'age' property to each sentence record to order by age --> 
-        <!-- Template | Model | View -->
-        Sort by: {{orderProp}}
-        <select ng-model="orderProp">
-          <option value="name">Alphabetical</option>
-          <option value="snippet">Newest</option>
-          <option value="-snippet">Oldest</option> <!-- reverse sort order -->
-        </select>
+          <!-- two-way data-binding b/w Select element and orderProp Model -->
+          <!-- added 'age' property to each sentence record to order by age --> 
+          <!-- Template | Model | View -->
+          Sort by: {{orderProp}}
+          <select ng-model="orderProp">
+            <option value="name">Alphabetical</option>
+            <option value="snippet">Newest</option>
+            <option value="-snippet">Oldest</option> <!-- reverse sort order -->
+          </select>
+          
+          <br>
+
+          <span class="error" ng-show="searchForm.sentenceName.$error.minlength">Error: At least 2 letters required</span>
+        </form>
 
       </div>
       <div class="col-md-10">
