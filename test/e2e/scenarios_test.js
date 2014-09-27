@@ -46,7 +46,9 @@ describe('YeomanIonic App', function() {
       ]);
 
       element(by.model('orderProp')).element(by.css('option[value="name"]')).click();
-
+      
+      waits(1000); // wait 1 second
+      
       expect(getNames()).toEqual([
         "Cheerio",
         "Greetings"
