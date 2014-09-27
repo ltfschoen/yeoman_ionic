@@ -34,4 +34,15 @@
     }
   );
 
+  mapDirectives.directive('focus', 
+    function() {
+      // returns object with property 'link'
+      return {
+        link: function(scope, element, attrs) {
+          element[0].focus();
+        }
+      };
+    }
+  );
+
 })();

@@ -41,7 +41,7 @@
         <!--Sidebar content-->
         
         <!-- Angular data-binds input box name on page load to matching data model -->
-        Search: <input ng-model="query"><br>
+        Search: <input ng-model="query" focus><br>
 
         <!-- two-way data-binding b/w Select element and orderProp Model -->
         <!-- added 'age' property to each sentence record to order by age --> 
@@ -71,6 +71,7 @@
             <!-- dynamically generate links using moustache binding -->
             <!-- ngSrc Directive for image attribute binding instead of just 'src' that grabs only the literal text -->
             <a href="#/sentences/{{sentence.id}}"><img class="thumb" ng-src="{{sentence.imageUrl}}"/></a>
+            <span>{{$index + 1}}</span>
             <span>{{sentence.name}}</span> |
             <p>{{sentence.snippet}}</p>
             <!-- ngBindTemplate allows multiple {{ }} -->
