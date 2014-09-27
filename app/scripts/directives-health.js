@@ -20,7 +20,7 @@
         // = - data binds property with property in Directive parent scope
         // @ - pass attribute as string and data bind value in enclosing scope using interpolation {{}} in attribute value
         // & - pass in fn from parent scope to be called later
-        scope: { title:'=progressTitle' },
+        scope: { title:'@progressTitle' },
         // template to insert for this directive
         // ng-transclude declares where original content goes and has 
         // access to parent scope
