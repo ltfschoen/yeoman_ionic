@@ -41,7 +41,7 @@
       });
     };
 
-    // healthConditions Directive
+    // HEALTH CONDITIONS DIRECTIVE
     
     // default value
     $scope.health = { conditionEstimate: 0 };
@@ -73,6 +73,12 @@
     $scope.$watch('health.conditionEstimate', $scope.computeNeeded);
     $scope.$watch('health.conditionEstimate', $scope.requestQuotation);
     // $scope.$watch('health.conditionEstimate', $scope.shareQuotation);
+
+    // HEALTH PROGRESS INFO
+
+    // values of enclosing scope of progress bar 
+    $scope.title = "Progress Status";
+    $scope.text = "Status is go";
 
   }]);
 
