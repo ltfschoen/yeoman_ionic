@@ -40,6 +40,14 @@
       <div class="col-md-2">
         <!--Sidebar content-->
         
+        <!-- NOT WORKING - START -->
+<!--         <form ng-submit="newSentence()">
+          New Sentence:
+          <textarea ng-model="sentenceData.name"></textarea>
+          <button type="submit">Create</button>
+        </form> -->
+        <!-- NOT WORKING - END -->
+        
         <form name="searchForm">
           <!-- Angular data-binds input box name on page load to matching data model -->
           Search: <input name="sentenceName" ng-model="query" ng-minlength="2" ng-pattern="/[a-zA-Z]/" focus><br>

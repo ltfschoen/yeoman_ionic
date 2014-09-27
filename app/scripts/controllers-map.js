@@ -6,6 +6,17 @@
 
   mapControllers.controller('MapCtrl', ['$scope', '$ionicLoading', 'Sentences', function($scope, $ionicLoading, Sentences) {
 
+    // NOT WORKING - START
+    // form data to create new sentence
+    // $scope.sentenceData = {};
+
+    // $scope.newSentence = function() {
+    //   var sentence = new Sentences($scope.sentenceData);
+    //   sentence.$save();
+    // }
+    // NOT WORKING - END
+
+
     // $resource ngResource service for RESTful
     // assign dataset to scope of the controller as a Model named 'sentences'
     // 'Sentences.query()' GET request to 'data/sentences.json'

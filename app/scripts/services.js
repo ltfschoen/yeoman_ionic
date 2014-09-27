@@ -23,4 +23,19 @@
     }
   ]);
 
+  // NOT WORKING - START 
+  // yeomanIonicServices.factory('Sentences', ['$resource',
+  //   function($resource){
+  //     return $resource('data/sentences.json', {}, {
+  //       save: {
+  //         method:'POST', 
+  //         headers: {
+  //           'Content-Type': 'application/json'
+  //         }
+  //       }
+  //     });
+  //   }
+  // ]);
+  // NOT WORKING - START 
+
 })();
