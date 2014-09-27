@@ -71,6 +71,7 @@
             <!-- dynamically generate links using moustache binding -->
             <!-- ngSrc Directive for image attribute binding instead of just 'src' that grabs only the literal text -->
             <a href="#/sentences/{{sentence.id}}"><img class="thumb" ng-src="{{sentence.imageUrl}}"/></a>
+            <span>{{$index + 1}}</span>
             <span>{{sentence.name}}</span> |
             <p>{{sentence.snippet}}</p>
             <!-- ngBindTemplate allows multiple {{ }} -->
