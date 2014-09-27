@@ -14,4 +14,14 @@
     }
   );
 
+  // custom directive for health condition
+  healthDirectives.directive('healthConditions', 
+    function() {
+      return {
+        restrict: 'E',
+        templateUrl: 'partials/health-conditions.html'
+      };
+    }
+  );
+
 })();

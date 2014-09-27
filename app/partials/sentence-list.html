@@ -5,7 +5,7 @@
   <core-ajax url="//example.com/json" handleAs="json"></core-ajax>
 </ion-header-bar>
 
-<ion-content scroll="false">
+<ion-content scroll="true">
 
   <!-- tab bar custom directive -->
   <health-tabs></health-tabs>
@@ -50,6 +50,8 @@
           <option value="snippet">Newest</option>
           <option value="-snippet">Oldest</option> <!-- reverse sort order -->
         </select>
+
+        <health-conditions></health-conditions>
 
       </div>
       <div class="col-md-10">

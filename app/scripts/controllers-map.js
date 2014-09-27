@@ -40,6 +40,17 @@
         alert('Unable to get location: ' + error.message);
       });
     };
+
+    // healthConditions Directive
+    
+    // default value
+    $scope.health = { conditionEstimate: 0 };
+
+    // computed when user changes input value (ng-change Directive)
+    $scope.computeNeeded = function () {
+      $scope.health.needed = $scope.health.conditionEstimate * 5;
+    };
+
   }]);
 
   // ngResource (instead of $http) service used to fetch JSON files
