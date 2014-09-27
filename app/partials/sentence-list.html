@@ -5,7 +5,7 @@
   <core-ajax url="//example.com/json" handleAs="json"></core-ajax>
 </ion-header-bar>
 
-<ion-content scroll="false">
+<ion-content scroll="true">
 
   <!-- tab bar custom directive -->
   <health-tabs></health-tabs>
@@ -18,12 +18,14 @@
 
   <div class="panel" ng-show="tab === 2">
     <h4>{{ tab }}</h4>
-    <blockquote>None yet</blockquote>
+    <h3>Health Condition Estimate</h3>
+    <health-conditions></health-conditions>
   </div>
 
   <div class="panel" ng-show="tab === 3">
     <h4>{{ tab }}</h4>
-    <blockquote>None yet</blockquote>
+    <h3>Health Quotation</h3>
+    <health-quotations></health-quotations>
   </div>
 
   <map on-create="mapCreated(map)"></map>

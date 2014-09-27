@@ -70,6 +70,17 @@ describe('YeomanIonic App', function() {
       });
     });
 
+    // provided dosage for given condition
+    it('should provide correct dosage for health condition input', function() {
+      element(by.css('health-tabs li:nth-child(2) a')).click();
+      waits(1000); // wait 1 second
+      expect(element.all(by.css('health-conditions p')).first().getText()).toMatch(/Recommended Dosage: 0/);
+      var health = element(by.model('health.conditionEstimate'));
+      health.sendKeys('50');
+      waits(1000); // wait 1 second
+      expect(element.all(by.css('health-conditions p')).first().getText()).toMatch(/Recommended Dosage: 250/);
+    });
+
   });
 
   describe('Sentences detail view', function() {
