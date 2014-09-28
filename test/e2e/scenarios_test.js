@@ -40,7 +40,7 @@ describe('YeomanIonic App', function() {
       query.sendKeys('ee');
 
       waits(1000); // wait 1 second
-      
+
       // should match on 'ee' common to both sentences
       expect(getNames()).toEqual([
         "Greetings",
@@ -83,6 +83,11 @@ describe('YeomanIonic App', function() {
       health.sendKeys('50');
       waits(1000); // wait 1 second
       expect(element.all(by.css('health-conditions p')).first().getText()).toMatch(/Recommended Dosage: 250/);
+    });
+
+    it('should display 3 health progress bar tabs', function() {
+      var healthProgressBar = element.all(by.css('.health-progress-bar'));
+      expect(healthProgressBar.count()).toBe(3);
     });
 
   });
