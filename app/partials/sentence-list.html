@@ -7,11 +7,12 @@
 
 <ion-content scroll="true">
 
-  <br><br>
-  <!-- expanding progress info bar -->
-  <health-progress class="health-progress" progress-title='{{title}}'>
-    {{text}}
-  </health-progress>
+  <health-progress-bar-coordinator>
+    <!-- expanding progress info bar -->
+    <health-progress-bar class="health-progress-bar" ng-repeat='healthProgressBar in healthProgressBars' health-progress-title='{{healthProgressBar.title}}'>
+      <span>{{healthProgressBar.text}}</span>
+    </health-progress-bar>
+  </health-progress-bar-coordinator>
 
   <!-- tab bar custom directive -->
   <health-tabs></health-tabs>

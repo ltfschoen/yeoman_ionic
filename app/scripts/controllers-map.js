@@ -77,8 +77,17 @@
     // HEALTH PROGRESS INFO
 
     // values of enclosing scope of progress bar 
-    $scope.title = "Progress Status";
-    $scope.text = "Status is go";
+    $scope.healthProgressBars = [
+      { title: 'Bar 1 Title',
+        text:  'Bar 1 Text'
+      },
+      { title: 'Bar 2 Title',
+        text:  'Bar 2 Text'
+      },
+      { title: 'Bar 3 Title',
+        text:  'Bar 3 Text'
+      }
+    ];
 
   }]);
 
