@@ -22,7 +22,7 @@ Feature Progress (Basic)
 - [x] **Quote view**
   1. Quotation for recommended dosage. Share quotation for additional fee.
 - [ ] **Map view*
-  1. Google Maps track health condition, dosage, quotation provided. :bangbang:
+  1. Google Maps track health condition, dosage, quotation provided  :bangbang:.
 
 
 Testing with Protractor (E2E)
