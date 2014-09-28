@@ -21,7 +21,7 @@ Feature Progress (Basic)
   1. Calculates recommended dosage based on health condition input
 - [x] **Quote view**
   1. Quotation for recommended dosage. Share quotation for additional fee.
-- [ ] **Map view*
+- [ ] **Map view**
   1. Google Maps track health condition, dosage, quotation provided  :bangbang:.
 
 
