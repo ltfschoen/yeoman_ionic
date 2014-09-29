@@ -10,7 +10,8 @@
     'mapDirectives',
     'healthDirectives',
     'yeomanIonicServices',
-    'yeomanIonicAnimations'
+    'yeomanIonicAnimations',
+    'ngCookies' // bower install angular-cookies
   ]);
 
   yeomanIonicApp.config(['$routeProvider',

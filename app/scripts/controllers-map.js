@@ -4,7 +4,7 @@
 
   var mapControllers = angular.module('mapControllers', [])
 
-  mapControllers.controller('MapCtrl', ['$scope', '$ionicLoading', 'Sentences', function($scope, $ionicLoading, Sentences) {
+  mapControllers.controller('MapCtrl', ['$scope', '$ionicLoading', '$cookies', '$cookieStore', 'Sentences', function($scope, $ionicLoading, $cookies, $cookieStore, Sentences) {
 
     // $resource ngResource service for RESTful
     // assign dataset to scope of the controller as a Model named 'sentences'
