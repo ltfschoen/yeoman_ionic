@@ -7,6 +7,11 @@
 
 <ion-content scroll="true">
 
+  <div id="shared-quote-count">
+    Count of Shared Quotes: {{sharedQuoteCount}}<br>
+    <button ng-click="$broadcast('SharedQuote')">Acknowledge Receipt</button>
+  </div>
+
   <health-progress-bar-coordinator>
     <!-- expanding progress info bar -->
     <health-progress-bar class="health-progress-bar" ng-repeat='healthProgressBar in healthProgressBars' health-progress-title='{{healthProgressBar.title}}'>
