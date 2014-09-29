@@ -89,6 +89,14 @@
       }
     ];
 
+    // SHARED QUOTE COUNTER
+
+    $scope.sharedQuoteCount = 0;
+
+    $scope.$on('SharedQuote', function() {
+      $scope.sharedQuoteCount++;
+    });
+
   }]);
 
   // ngResource (instead of $http) service used to fetch JSON files

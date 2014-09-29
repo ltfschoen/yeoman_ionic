@@ -1,8 +1,11 @@
-<form ng-submit="shareQuotation()">
+<form ng-submit="shareQuotation()" ng-controller="MapCtrl">
   Health: <input ng-model="health.conditionEstimate"><br> 
-  <button>Share Quotation</button><br><br>
+  <button ng-click="$emit('SharedQuote')">Share Quotation</button><br><br>
   <p>Recommended Dosage: {{health.needed}}</p><br>
   <p>Quotation: {{health.quote | currency}}</p><br>
   <p>Shared Quotation: {{health.quoteShared | currency}}</p>
+  <div id="received-quote-count">
+    Count of Shared Quotes and Acknowledgements: {{sharedQuoteCount}}<br>
+  </div>
 </form><br>
 Note: Standard fee of $20.00 applies for sharing the quotation.
