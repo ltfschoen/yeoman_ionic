@@ -7,6 +7,8 @@
 
 <ion-content scroll="true">
 
+  <map on-create="mapCreated(map)"></map>
+
   <div id="shared-quote-count">
     Count of Shared Quotes: {{sharedQuoteCount}}<br>
     <button ng-click="$broadcast('SharedQuote')">Acknowledge Receipt</button>
@@ -39,8 +41,6 @@
     <h3>Health Quotation</h3>
     <health-quotations></health-quotations>
   </div>
-
-  <map on-create="mapCreated(map)"></map>
 
   <!-- dynamic content. -->
   <!-- Angular refreshes binding points. Updates view -->

@@ -4,7 +4,7 @@
 
   var mapControllers = angular.module('mapControllers', [])
 
-  mapControllers.controller('MapCtrl', ['$scope', '$ionicLoading', 'Sentences', function($scope, $ionicLoading, Sentences) {
+  mapControllers.controller('MapCtrl', ['$scope', '$ionicLoading', '$cookies', '$cookieStore', 'Sentences', function($scope, $ionicLoading, $cookies, $cookieStore, Sentences) {
 
     // $resource ngResource service for RESTful
     // assign dataset to scope of the controller as a Model named 'sentences'
@@ -35,6 +35,8 @@
       navigator.geolocation.getCurrentPosition(function (pos) {
         console.log('Got pos', pos);
         $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+        $scope.map.setMapType(G_SATELLITE_MAP);
+        $scope.map.addControl(new google.maps.OverviewMap());
         $ionicLoading.hide();
       }, function (error) {
         alert('Unable to get location: ' + error.message);
